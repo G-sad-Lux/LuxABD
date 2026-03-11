@@ -1,13 +1,17 @@
+import React, { useEffect } from 'react';
 import { Slot, useRouter, useSegments } from 'expo-router';
-import { useEffect } from 'react';
 import { AuthProvider, useAuth } from '../hooks/useAuth';
+
+import { ThemeProvider } from '../hooks/useTheme';
 
 // Root Layout Wrapper
 export default function RootLayout() {
   return (
-    <AuthProvider>
-      <AuthLayout />
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <AuthLayout />
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
@@ -26,8 +30,8 @@ function AuthLayout() {
       // Redirect to the login page
       router.replace('/(auth)/login');
     } else if (session && inAuthGroup) {
-      // Redirect away from login to main dashboard
-      router.replace('/');
+      // Redirect away from login to the tab-based dashboard
+      router.replace('/(tabs)');
     }
   }, [session, isLoading, segments]);
 

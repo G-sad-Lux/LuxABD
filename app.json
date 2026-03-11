@@ -25,7 +25,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png",
-      "baseUrl": "/tarea-lux"
+      "baseUrl": "/LuxABD"
     },
     "plugins": [
       "expo-router"
