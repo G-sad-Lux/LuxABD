@@ -33,9 +33,13 @@ jobs:
         run: npm ci
 
       - name: Build Expo web (static export)
-        run: npx expo export --platform web
+        run: npx expo export --platform web --clear
         env:
           NODE_ENV: production
+          EXPO_BASE_URL: /LuxABD
+
+      - name: Fix paths for GitHub Pages
+        run: node fix-paths.js
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
